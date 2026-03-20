@@ -1,92 +1,93 @@
 @import "tailwindcss";
+@custom-variant dark (&:is(.dark *));
 
-@theme inline {
-  --font-sans: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', system-ui, sans-serif;
-  --font-mono: 'JetBrains Mono', 'Fira Code', ui-monospace, monospace;
-}
-
-/* 다크 테마 기본 설정 */
+/* 테마 CSS 변수 */
 :root {
-  color-scheme: dark;
+  --bg: #f8fafc;
+  --surface: #ffffff;
+  --surface-2: #f1f5f9;
+  --surface-3: #e2e8f0;
+  --border: rgba(0, 0, 0, 0.08);
+  --border-2: rgba(0, 0, 0, 0.05);
+  --t1: #0f172a;
+  --t2: #475569;
+  --t3: #94a3b8;
+  --sidebar: #f1f5f9;
+  --sb-border: rgba(0, 0, 0, 0.06);
 }
 
-* {
-  box-sizing: border-box;
+.dark {
+  --bg: #0a0a0a;
+  --surface: #111827;
+  --surface-2: #1f2937;
+  --surface-3: #374151;
+  --border: rgba(255, 255, 255, 0.06);
+  --border-2: rgba(255, 255, 255, 0.04);
+  --t1: #f1f5f9;
+  --t2: #94a3b8;
+  --t3: #64748b;
+  --sidebar: #0d0d1a;
+  --sb-border: rgba(255, 255, 255, 0.06);
 }
 
-html {
-  background: #0a0a0a;
-  color: #f1f5f9;
+/* Tailwind v4 커스텀 유틸리티 */
+@utility bg-surface { background-color: var(--surface); }
+@utility bg-surface-2 { background-color: var(--surface-2); }
+@utility bg-bg { background-color: var(--bg); }
+@utility border-themed { border-color: var(--border); }
+@utility border-themed-2 { border-color: var(--border-2); }
+@utility text-t1 { color: var(--t1); }
+@utility text-t2 { color: var(--t2); }
+@utility text-t3 { color: var(--t3); }
+
+/* 기본 스타일 */
+html, body {
+  background-color: var(--bg);
+  color: var(--t1);
 }
 
 body {
-  background: #0a0a0a;
-  color: #f1f5f9;
   font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
-/* 커스텀 스크롤바 */
-::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
-}
-::-webkit-scrollbar-track {
-  background: #111827;
-}
-::-webkit-scrollbar-thumb {
-  background: #374151;
-  border-radius: 3px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: #4f46e5;
-}
+/* 스크롤바 */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--surface-3); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #4f46e5; }
 
-/* 카드 글로우 효과 */
+/* 카드 glow */
 .card-glow {
-  box-shadow: 0 0 0 1px rgba(79, 70, 229, 0.1), 0 4px 6px -1px rgba(0, 0, 0, 0.4);
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+.dark .card-glow:hover {
+  box-shadow: 0 0 0 1px rgba(79, 70, 229, 0.3), 0 8px 25px -5px rgba(79, 70, 229, 0.15);
+  transform: translateY(-1px);
 }
 .card-glow:hover {
-  box-shadow: 0 0 0 1px rgba(79, 70, 229, 0.3), 0 8px 25px -5px rgba(79, 70, 229, 0.2);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transform: translateY(-1px);
 }
 
-/* 완성도 게이지 애니메이션 */
-@keyframes progressFill {
-  from { width: 0%; }
-  to { width: var(--target-width); }
-}
-
-.progress-bar {
-  animation: progressFill 1s ease-out forwards;
-}
-
-/* 페이드 인 */
+/* 페이드인 */
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(8px); }
+  from { opacity: 0; transform: translateY(6px); }
   to { opacity: 1; transform: translateY(0); }
 }
+.fade-in { animation: fadeIn 0.35s ease-out forwards; }
 
-.fade-in {
-  animation: fadeIn 0.4s ease-out forwards;
-}
-
-/* 펄스 (active 표시) */
+/* 펄스 */
 @keyframes pulse-soft {
   0%, 100% { opacity: 1; }
-  50% { opacity: 0.6; }
+  50% { opacity: 0.5; }
 }
+.pulse-soft { animation: pulse-soft 2s ease-in-out infinite; }
 
-.pulse-soft {
-  animation: pulse-soft 2s ease-in-out infinite;
-}
+/* 상태 배지 */
+.status-active { background: rgba(16,185,129,0.12); color: #10b981; border: 1px solid rgba(16,185,129,0.25); }
+.status-monitoring { background: rgba(245,158,11,0.12); color: #f59e0b; border: 1px solid rgba(245,158,11,0.25); }
+.status-archived { background: rgba(100,116,139,0.12); color: #94a3b8; border: 1px solid rgba(100,116,139,0.25); }
 
-/* 배지 */
-.status-active { background: rgba(16, 185, 129, 0.15); color: #10b981; border: 1px solid rgba(16, 185, 129, 0.3); }
-.status-monitoring { background: rgba(245, 158, 11, 0.15); color: #f59e0b; border: 1px solid rgba(245, 158, 11, 0.3); }
-.status-archived { background: rgba(100, 116, 139, 0.15); color: #94a3b8; border: 1px solid rgba(100, 116, 139, 0.3); }
-
-/* Mermaid 다크 테마 오버라이드 */
-.mermaid-container .label {
-  color: #f1f5f9 !important;
-}
+/* Mermaid 오버라이드 */
+.mermaid-container svg { max-width: 100%; height: auto; }
