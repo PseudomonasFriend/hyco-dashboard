@@ -1,6 +1,6 @@
 // HYco 대시보드 정적 데이터
 // 소스: C:/Projects_local/_bot/ 파일 기반
-// 마지막 동기화: 2026-03-22
+// 마지막 동기화: 2026-03-21 (post_work.py 자동 동기화) (post_work.py 자동 동기화) (HY 7건 의사결정 반영)
 
 import type {
   Project,
@@ -16,7 +16,7 @@ export const KPI: KpiSnapshot = {
   monthlyRevenueStatus: 'yellow',
   adSenseSites: 2,
   weeklyCommits: 25,
-  pendingDecisions: 7,
+  pendingDecisions: 0,
   inboxCount: 0,
   activeProjects: 4,
 };
@@ -40,11 +40,10 @@ export const PROJECTS: Project[] = [
       'AdSense 재심사 결과 확인 (3/06 제출, 2주+ 경과)',
       'AdSense 광고 슬롯 최적화 (재심사 통과 후)',
     ],
-    pendingDecisions: [
-      { item: 'Vercel KV vs Redis 전환 여부', date: '03-02', daysPending: 49 },
-    ],
+    pendingDecisions: [],
     lastUpdated: '2026-03-21',
     brainHighlights: [
+      '✅ (03-21) Vercel KV 채택 → route.ts 캐시 레이어 교체 완료',
       '✅ /platform/[slug] 40페이지 SSG 완료',
       '✅ 카테고리 11페이지 SSG 완료',
       '✅ SEO 극대화 (meta+OG+JSON-LD+sitemap)',
@@ -95,18 +94,15 @@ export const PROJECTS: Project[] = [
     techStack: ['Next.js 16', 'Tailwind v4', 'Recharts', 'i18n (ko/en)'],
     nextTasks: [
       'Gumroad 계정 생성 + 판매 페이지 세팅 (파일 준비 완료)',
-      '도메인·브랜드명·판매채널 의사결정 (48일 대기)',
       '데이터 DB 확장 (기업 50+ 프로젝트 50+)',
       'Substack 뉴스레터 (4월 시작)',
     ],
-    pendingDecisions: [
-      { item: 'Gumroad 판매 시작 시점 결정', date: '03-02', daysPending: 49 },
-      { item: '도메인 구매 여부', date: '03-02', daysPending: 49 },
-      { item: '판매 채널 결정 (Gumroad vs 자체)', date: '03-03', daysPending: 48 },
-      { item: '프로젝트 브랜드명 확정', date: '03-03', daysPending: 48 },
-    ],
+    pendingDecisions: [],
     lastUpdated: '2026-03-21',
     brainHighlights: [
+      '✅ (03-21) 브랜드명 H2Prism 확정',
+      '✅ (03-21) 판매 채널: Gumroad + 자체 사이트 (Gumroad 먼저)',
+      '✅ (03-21) 판매 시점 유예, 도메인 3/25 이후 유예',
       '✅ Excel 상품 6파일 완성 (Tier1/2/3 한/영)',
       '✅ 블로그 영문 포스트 5편 (SSG 31페이지)',
       '✅ LCOH 계산기 3단계 티어 (DCF, NPV/IRR, 시나리오)',
@@ -131,11 +127,10 @@ export const PROJECTS: Project[] = [
       'C-Rank 기초 작업 (프로필, 카테고리, 이웃추가)',
       '주 3~5회 발행 루틴 정착',
     ],
-    pendingDecisions: [
-      { item: '블로그명 확정', date: '03-05', daysPending: 16 },
-    ],
+    pendingDecisions: [],
     lastUpdated: '2026-03-21',
     brainHighlights: [
+      '✅ (03-21) 블로그명 "어디갈까" 확정 (채널 ID: wheretogo)',
       '✅ 콘텐츠 3편 테스트 생성 및 품질 검증',
       '✅ pytest 70개 통과 (28→70개)',
       '✅ --images 파이프라인 추가',
@@ -186,9 +181,7 @@ export const PROJECTS: Project[] = [
       'Supabase phone 컬럼 추가 (스키마 마이그레이션)',
       '런치 스위치 전환 DEMO_MODE=false',
     ],
-    pendingDecisions: [
-      { item: '런치 시점 결정 (ChehumZip MAU 1000+ 달성 후)', date: '03-02', daysPending: 49 },
-    ],
+    pendingDecisions: [],
     lastUpdated: '2026-03-17',
     brainHighlights: [
       '✅ 보안 이슈 9건 수정',
@@ -198,79 +191,15 @@ export const PROJECTS: Project[] = [
   },
 ];
 
-export const APPROVALS: Approval[] = [
-  {
-    id: 'chehum-kv',
-    project: 'ChehumZip',
-    projectSlug: 'chehumzip',
-    item: 'Vercel KV vs Redis 전환 여부',
-    registeredDate: '2026-03-02',
-    daysPending: 49,
-    urgency: 'critical',
-  },
-  {
-    id: 'hydro-gumroad-timing',
-    project: 'hydrogen_tools',
-    projectSlug: 'hydrogen',
-    item: 'Gumroad 판매 시작 시점 결정',
-    registeredDate: '2026-03-02',
-    daysPending: 49,
-    urgency: 'critical',
-  },
-  {
-    id: 'hydro-domain',
-    project: 'hydrogen_tools',
-    projectSlug: 'hydrogen',
-    item: '도메인 구매 여부',
-    registeredDate: '2026-03-02',
-    daysPending: 49,
-    urgency: 'critical',
-  },
-  {
-    id: 'hydro-channel',
-    project: 'hydrogen_tools',
-    projectSlug: 'hydrogen',
-    item: '판매 채널 결정 (Gumroad vs 자체)',
-    registeredDate: '2026-03-03',
-    daysPending: 48,
-    urgency: 'critical',
-  },
-  {
-    id: 'hydro-brand',
-    project: 'hydrogen_tools',
-    projectSlug: 'hydrogen',
-    item: '프로젝트 브랜드명 확정',
-    registeredDate: '2026-03-03',
-    daysPending: 48,
-    urgency: 'critical',
-  },
-  {
-    id: 'pickntry-launch',
-    project: 'pickntry',
-    projectSlug: 'pickntry',
-    item: '런치 시점 결정',
-    registeredDate: '2026-03-02',
-    daysPending: 49,
-    urgency: 'critical',
-  },
-  {
-    id: 'wheretogo-blogname',
-    project: 'wheretogo',
-    projectSlug: 'wheretogo',
-    item: '블로그명 확정',
-    registeredDate: '2026-03-05',
-    daysPending: 16,
-    urgency: 'warning',
-  },
-];
+// 승인 대기 없음 — 모두 결정 완료
+export const APPROVALS: Approval[] = [];
 
 export const HY_DIRECT_TASKS: HyDirectTask[] = [
   { item: 'Search Console 등록', project: 'ChehumZip + Toolsajang', memo: '브라우저 이슈 해소 후 시크릿 모드로 재시도' },
   { item: '네이버 서치어드바이저 등록', project: 'ChehumZip + Toolsajang', memo: 'HY 직접 등록 필요' },
   { item: 'AI 툴 isActive: true 변경', project: 'Toolsajang', memo: 'src/data/tools.ts 코드 1줄 — Gemini API 준비 완료' },
   { item: 'AdSense 재심사 결과 확인', project: 'ChehumZip', memo: '2026-03-06 제출, 2주+ 경과 — Google 콘솔 확인' },
-  { item: 'hydrogen_tools 의사결정 4건', project: 'hydrogen_tools', memo: '브랜드명·판매채널·도메인·시점 — Excel 6파일 완성됨' },
-  { item: 'Gumroad 계정 생성', project: 'hydrogen_tools', memo: 'Excel 파일 패키징 완료, 계정 생성만 남음' },
+  { item: 'Gumroad 계정 생성', project: 'hydrogen_tools', memo: 'Excel 파일 패키징 완료, 판매채널 Gumroad+자체 결정됨' },
 ];
 
 export const LOGS: LogEntry[] = [
@@ -284,6 +213,7 @@ export const LOGS: LogEntry[] = [
       { category: '문서', title: 'agent_log 추가', result: '2026-03-22 세션 로그', status: 'done' },
       { category: '대시보드', title: 'HYco Dashboard 구축', result: 'Next.js 16 + Tailwind v4', status: 'done' },
       { category: '배포', title: 'GitHub + Vercel 배포', result: 'PseudomonasFriend/hyco-dashboard', status: 'done' },
+      { category: '의사결정', title: 'HY 7건 승인 완료', result: 'wheretogo블로그명·pickntry보류·ChehumZip KV·hydrogen 4건', status: 'done' },
     ],
   },
   {

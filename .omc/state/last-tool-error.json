@@ -1,0 +1,7 @@
+{
+  "tool_name": "Bash",
+  "tool_input_preview": "{\"command\":\"cd C:/Projects_local/hyco-dashboard && gh repo create PseudomonasFriend/hyco-dashboard --public --source=. --push 2>&1\",\"description\":\"Create GitHub repo and push\"}",
+  "error": "Exit code 1\nhttps://github.com/PseudomonasFriend/hyco-dashboard\nremote: error: GH007: Your push would publish a private email address.        \nremote: You can make your email public or disable this protection by visiting:        \nremote: https://github.com/settings/emails        \nTo https://github.com/PseudomonasFriend/hyco-dashboard.git\n ! [remote rejected] HEAD -> master (push declined due to email privacy restrictions)\nerror: failed to push some refs to 'https://github.com/PseudomonasFriend/h...",
+  "timestamp": "2026-03-20T10:11:37.550Z",
+  "retry_count": 1
+}
