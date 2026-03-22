@@ -1,6 +1,6 @@
 // HYco 대시보드 정적 데이터
 // 소스: C:/Projects_local/_bot/ 파일 기반
-// 마지막 동기화: 2026-03-21 (HY 7건 의사결정 반영)
+// 마지막 동기화: 2026-03-22 (post_work.py 자동 동기화)
 
 import type {
   Project,
